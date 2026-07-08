@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ✦ Indie Gen
+
+Generate unique indie game ideas in seconds. Break creative blocks with randomized mechanics, stories, gameplay loops and AI-assisted game design.
+
+## Tech Stack
+
+- **Framework:** Next.js 16 (App Router)
+- **Styling:** Tailwind CSS v4
+- **UI:** shadcn/ui + Lucide icons
+- **Auth:** NextAuth.js v4 (credentials + GitHub OAuth)
+- **Database:** SQLite via Prisma 7 + libSQL adapter
+- **State:** Zustand
+- **Design:** Pencil (.pen design files in `docs/`)
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# Install dependencies
+npm install
+
+# Generate Prisma client
+npx prisma generate
+
+# Run migrations (creates SQLite database)
+npx prisma migrate dev
+
+# Start dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Auth Setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The app uses NextAuth with email/password credentials and optional OAuth.
 
-## Learn More
+### First run
 
-To learn more about Next.js, take a look at the following resources:
+1. Go to `/signup` and create an account
+2. Log in at `/login`
+3. You'll be redirected to the dashboard
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### OAuth (optional)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+GitHub credentials are pre-configured in `.env`. For production, replace with your own:
 
-## Deploy on Vercel
+1. [GitHub OAuth Apps](https://github.com/settings/developers) — set callback to `http://localhost:3000/api/auth/callback/github`
+2. [Google Cloud Console](https://console.cloud.google.com/apis/credentials) — set redirect URI to `http://localhost:3000/api/auth/callback/google`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Production
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+# Generate a real secret
+npx auth secret
+```
+
+Update `.env`:
+- `NEXTAUTH_SECRET` — strong random string
+- `NEXTAUTH_URL` — your production domain
+- OAuth credentials — production app IDs
+
+## Project Structure
+
+```
+├── app/
+│   ├── api/auth/       # NextAuth + signup API routes
+│   ├── dashboard/      # Dashboard pages (generate, manual, saved, etc.)
+│   └── login/          # Auth pages
+├── components/
+│   ├── auth/           # Session provider
+│   ├── dashboard/      # Sidebar, cards, manual row
+│   └── ui/             # shadcn components (Select, etc.)
+├── lib/
+│   ├── auth.ts         # NextAuth configuration
+│   └── prisma.ts       # Prisma client
+├── store/
+│   └── idea-store.ts   # Zustand store for game ideas
+├── prisma/
+│   └── schema.prisma   # User model
+├── docs/
+│   └── random.pen      # Design file (open with Pencil)
+└── proxy.ts            # Route protection
+```
+
+## Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start dev server |
+| `npm run build` | Production build |
+| `npm run start` | Start production server |
+| `npm run lint` | Run ESLint |
+| `npx prisma studio` | Open database browser |
+| `npx prisma migrate dev` | Run database migrations |
+
+## Design
+
+Design files are in `docs/` as `.pen` files. Open them with [Pencil](https://pencil.design) to view screens and components.
