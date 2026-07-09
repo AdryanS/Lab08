@@ -3,12 +3,6 @@
 import { Lock, LockOpen, RefreshCw } from 'lucide-react'
 import { useIdeaStore, type IdeaState } from '@/store/idea-store'
 
-const categoryKeys = [
-  'genres', 'gameplay', 'graphics', 'dimension',
-  'setting', 'objective', 'story', 'progression',
-  'gameLoop', 'hook', 'audience', 'scope',
-] as const
-
 const labels: Record<keyof IdeaState, string> = {
   genres: 'GENRE', gameplay: 'GAMEPLAY', graphics: 'GRAPHICS',
   dimension: 'CAMERA', setting: 'SETTING', objective: 'OBJECTIVE',

@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import { Share2 } from 'lucide-react'
 import { ManualRow } from '@/components/dashboard/manual-row'
 import { useIdeaStore, categoryKeys, labels } from '@/store/idea-store'
 

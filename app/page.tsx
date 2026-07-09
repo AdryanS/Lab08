@@ -26,16 +26,10 @@ export default function Home() {
         </div>
         <nav className="flex items-center gap-6">
           <Link
-            href="/login"
-            className="font-[Geist_Mono] text-[11px] tracking-wider text-[#666666] hover:text-white transition-colors"
-          >
-            LOG IN
-          </Link>
-          <Link
-            href="/signup"
+            href="/dashboard"
             className="flex h-10 items-center justify-center border border-[#333333] px-5 font-ibm-mono text-[11px] tracking-wider text-white hover:bg-white/5 transition-colors"
           >
-            SIGN UP
+            GET STARTED
           </Link>
         </nav>
       </header>

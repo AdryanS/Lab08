@@ -13,7 +13,7 @@ export function ExampleIdea() {
         EXAMPLE IDEA
       </h2>
       <div className="flex border border-[#2A2A2A] bg-[#1A1A1A] p-4">
-        {examples.map(([cat, val], i) => (
+        {examples.map(([cat, val]) => (
           <div key={cat} className="flex flex-col gap-1.5 px-4 py-3">
             <span className="font-[Geist_Mono] text-[9px] tracking-widest text-[#444444]">
               {cat}

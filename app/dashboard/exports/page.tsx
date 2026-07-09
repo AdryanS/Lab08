@@ -48,13 +48,13 @@ export default function ExportsPage() {
     },
     {
       id: 'pdf', name: 'PDF', ext: '.pdf',
-      badge: 'PRO', badgeColor: '#FF6B00',
+      badge: 'WIP', badgeColor: '#FF6B00',
       desc: 'Professional PDF document (coming soon)',
       locked: true,
     },
     {
       id: 'png', name: 'PNG', ext: '.png',
-      badge: 'PRO', badgeColor: '#FF6B00',
+      badge: 'WIP', badgeColor: '#FF6B00',
       desc: 'Export as image for social media (coming soon)',
       locked: true,
     },
@@ -90,7 +90,7 @@ export default function ExportsPage() {
               </button>
             ) : (
               <div className="flex h-10 items-center justify-center border border-[#333333] font-ibm-mono text-[11px] tracking-wider text-[#444444] cursor-not-allowed">
-                PRO
+                WIP
               </div>
             )}
           </div>

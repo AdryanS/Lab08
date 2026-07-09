@@ -1,8 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, IBM_Plex_Mono } from "next/font/google";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
-import { SessionProvider } from "@/components/auth/session-provider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -26,13 +23,11 @@ export const metadata: Metadata = {
   description: "Generate unique indie game ideas in seconds. Break creative blocks with randomized mechanics, stories, gameplay loops and AI-assisted game design.",
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await getServerSession(authOptions)
-
   return (
     <html
       lang="en"
@@ -40,7 +35,7 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col bg-[#000000]">
-        <SessionProvider session={session}>{children}</SessionProvider>
+        {children}
       </body>
     </html>
   );
