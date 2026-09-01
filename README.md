@@ -1,6 +1,6 @@
-# ✦ Indie Gen
+# ✦ Lab08 Game generator
 
-Generate unique indie game ideas in seconds. Break creative blocks with randomized mechanics, stories, gameplay loops and AI-assisted game design.
+Generate unique game ideas in seconds. Break creative blocks with randomized mechanics, stories, gameplay loops and game design.
 
 ## Tech Stack
 
